@@ -61,9 +61,9 @@ public class PlatinumArmory implements ModInitializer {
 	private static final ConfiguredFeature<?, ?> ORE_PLATINUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
 			PLATINUM_ORE.getDefaultState(), 2)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(9);
 	private static final ConfiguredFeature<?, ?> ORE_IRIDIUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(3);
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 24))).spreadHorizontally().repeat(3);
 	private static final ConfiguredFeature<?, ?> ORE_IRIDIUM_END = Feature.ORE.configure(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE),
-			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(6);
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6 /*min-Y*/, 128/*max-Y*/))).spreadHorizontally().repeat(6);
 
 	@Override
 	public void onInitialize() {
@@ -104,7 +104,6 @@ public class PlatinumArmory implements ModInitializer {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, craftID("ore_platinum_overworld"), ORE_PLATINUM_OVERWORLD);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, craftID("ore_iridium_overworld"), ORE_IRIDIUM_OVERWORLD);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, craftID("ore_iridium_end"), ORE_IRIDIUM_END);
-
 	}
 	public Identifier craftID(String id){
 		return new Identifier(MOD_ID, id);
