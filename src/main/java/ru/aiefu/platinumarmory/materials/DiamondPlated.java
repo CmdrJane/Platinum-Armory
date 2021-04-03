@@ -13,7 +13,7 @@ public class DiamondPlated implements ArmorMaterial {
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return BASE_DURABILITY[slot.getEntitySlotId() * 37];
+        return BASE_DURABILITY[slot.getEntitySlotId()] * 37;
     }
 
     @Override
