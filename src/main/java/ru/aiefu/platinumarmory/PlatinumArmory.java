@@ -67,7 +67,7 @@ public class PlatinumArmory implements ModInitializer {
 	public static final ConfiguredFeature<?, ?> ORE_IRIDIUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
 			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 24))).spreadHorizontally().repeat(3);
 	public static final ConfiguredFeature<?, ?> ORE_IRIDIUM_END = Feature.ORE.configure(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE),
-			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0 /*min-Y*/, 128/*max-Y*/))).spreadHorizontally().repeat(6);
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0 /*min-Y*/, 128/*max-Y*/))).spreadHorizontally().repeat(5);
 
 	@Override
 	public void onInitialize() {
