@@ -38,7 +38,7 @@ public class IridiumPlatinumAlloy implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return null;
+        return "plat_ir";
     }
 
     @Override

@@ -39,7 +39,7 @@ public class GoldPlatinumAlloy implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return null;
+        return "plat_gold";
     }
 
     @Override

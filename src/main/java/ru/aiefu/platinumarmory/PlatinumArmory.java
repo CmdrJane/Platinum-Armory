@@ -1,6 +1,8 @@
 package ru.aiefu.platinumarmory;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
@@ -12,6 +14,8 @@ import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -58,22 +62,22 @@ public class PlatinumArmory implements ModInitializer {
 	public static final Block IRIDIUM_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().strength(5.0f));
 	public static final Block PLATINUM_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(1.5f));
 	//Ore-Config-Feature
-	private static final ConfiguredFeature<?, ?> ORE_PLATINUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-			PLATINUM_ORE.getDefaultState(), 2)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(9);
-	private static final ConfiguredFeature<?, ?> ORE_IRIDIUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 24))).spreadHorizontally().repeat(3);
-	private static final ConfiguredFeature<?, ?> ORE_IRIDIUM_END = Feature.ORE.configure(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE),
-			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6 /*min-Y*/, 128/*max-Y*/))).spreadHorizontally().repeat(6);
+	public static final ConfiguredFeature<?, ?> ORE_PLATINUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+			PLATINUM_ORE.getDefaultState(), 2)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 18))).spreadHorizontally().repeat(9);
+	public static final ConfiguredFeature<?, ?> ORE_IRIDIUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 24))).spreadHorizontally().repeat(3);
+	public static final ConfiguredFeature<?, ?> ORE_IRIDIUM_END = Feature.ORE.configure(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE),
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0 /*min-Y*/, 128/*max-Y*/))).spreadHorizontally().repeat(6);
 
 	@Override
 	public void onInitialize() {
 		Registry.register(Registry.ITEM, craftID("platinum_ingot"), PLATINUM_INGOT);
-		Registry.register(Registry.ITEM, craftID("plat_gold_allow_raw"), PLATINUM_GOLDEN_ALLOY_RAW);
-		Registry.register(Registry.ITEM, craftID("plat_gold_allow_smelted"), PLATINUM_GOLDEN_ALLOY_SMELTED);
+		Registry.register(Registry.ITEM, craftID("plat_gold_alloy_raw"), PLATINUM_GOLDEN_ALLOY_RAW);
+		Registry.register(Registry.ITEM, craftID("plat_gold_alloy_smelted"), PLATINUM_GOLDEN_ALLOY_SMELTED);
 		Registry.register(Registry.ITEM, craftID("diamond_plate"), DIAMOND_PLATE);
 		Registry.register(Registry.ITEM, craftID("iridium_ingot"), IRIDIUM_INGOT);
-		Registry.register(Registry.ITEM, craftID("plat_ir_allow_raw"), PLATINUM_IRIDIUM_ALLOY_RAW);
-		Registry.register(Registry.ITEM, craftID("plat_ir_allow_smelted"), PLATINUM_IRIDIUM_ALLOY_SMELTED);
+		Registry.register(Registry.ITEM, craftID("plat_ir_alloy_raw"), PLATINUM_IRIDIUM_ALLOY_RAW);
+		Registry.register(Registry.ITEM, craftID("plat_ir_alloy_smelted"), PLATINUM_IRIDIUM_ALLOY_SMELTED);
 		//Plat-Gold-Armor
 		Registry.register(Registry.ITEM, craftID("plat_gold_helmet"), PLATINUM_GOLD_HELMET);
 		Registry.register(Registry.ITEM, craftID("plat_gold_chestplate"), PLATINUM_GOLD_CHESTPLATE);

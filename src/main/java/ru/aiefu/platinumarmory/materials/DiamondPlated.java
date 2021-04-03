@@ -38,7 +38,7 @@ public class DiamondPlated implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return null;
+        return "diamond_plated";
     }
 
     @Override
