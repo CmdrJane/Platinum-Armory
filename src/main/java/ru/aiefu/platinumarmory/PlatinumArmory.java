@@ -2,14 +2,21 @@ package ru.aiefu.platinumarmory;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.Blocks;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.*;
+import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import ru.aiefu.platinumarmory.materials.DiamondPlated;
 import ru.aiefu.platinumarmory.materials.GoldPlatinumAlloy;
 import ru.aiefu.platinumarmory.materials.IridiumPlatinumAlloy;
@@ -17,29 +24,46 @@ import ru.aiefu.platinumarmory.materials.IridiumPlatinumAlloy;
 public class PlatinumArmory implements ModInitializer {
 
 	public static final String MOD_ID = "platinumarmory";
-
+	//Materials
 	public static final ArmorMaterial PLATINUM_GOLD_ALLOY = new GoldPlatinumAlloy();
 	public static final ArmorMaterial DIAMOND_PLATED = new DiamondPlated();
 	public static final ArmorMaterial PLATINUM_IRIDIUM_ALLOY = new IridiumPlatinumAlloy();
-	public static final Item PLATINUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item PLATINUM_GOLDEN_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item PLATINUM_GOLDEN_ALLOY_SMELTED = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item DIAMOND_PLATE = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item IRIDIUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item PLATINUM_IRIDIUM_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item PLATINUM_IRIDIUM_ALLOY_SMELTED = new Item(new FabricItemSettings().group(ItemGroup.MISC));
+	//Crafting Stuff
+	public static final Item PLATINUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item PLATINUM_GOLDEN_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item PLATINUM_GOLDEN_ALLOY_SMELTED = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item DIAMOND_PLATE = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item IRIDIUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item PLATINUM_IRIDIUM_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item PLATINUM_IRIDIUM_ALLOY_SMELTED = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	//Armor Plat-Gold
 	public static final Item PLATINUM_GOLD_HELMET = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_GOLD_CHESTPLATE = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_GOLD_LEGGINGS = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_GOLD_BOOTS = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
+	//Armor Diamond-Plated
 	public static final Item DIAMOND_PLATED_HELMET = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item DIAMOND_PLATED_CHESTPLATE = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item DIAMOND_PLATED_LEGGINGS = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item DIAMOND_PLATED_BOOTS = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
+	//Armor Platinum-Iridium
 	public static final Item PLATINUM_IRIDIUM_HELMET = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_IRIDIUM_CHESTPLATE = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_IRIDIUM_LEGGINGS = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_IRIDIUM_BOOTS = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
+	//Ore
+	public static final OreBlock PLATINUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0f));
+	public static final OreBlock IRIDIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().strength(6.0f));
+	//Blocks
+	public static final Block IRIDIUM_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().strength(5.0f));
+	public static final Block PLATINUM_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(1.5f));
+	//Ore-Config-Feature
+	private static final ConfiguredFeature<?, ?> ORE_PLATINUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+			PLATINUM_ORE.getDefaultState(), 2)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(9);
+	private static final ConfiguredFeature<?, ?> ORE_IRIDIUM_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(3);
+	private static final ConfiguredFeature<?, ?> ORE_IRIDIUM_END = Feature.ORE.configure(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE),
+			IRIDIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 6, 18))).spreadHorizontally().repeat(6);
 
 	@Override
 	public void onInitialize() {
@@ -65,6 +89,21 @@ public class PlatinumArmory implements ModInitializer {
 		Registry.register(Registry.ITEM, craftID("plat_ir_chestplate"), PLATINUM_IRIDIUM_CHESTPLATE);
 		Registry.register(Registry.ITEM, craftID("plat_ir_leggings"), PLATINUM_IRIDIUM_LEGGINGS);
 		Registry.register(Registry.ITEM, craftID("plat_ir_boots"), PLATINUM_IRIDIUM_BOOTS);
+		//Register Ore Blocks
+		Registry.register(Registry.BLOCK, craftID("platinum_ore"), PLATINUM_ORE);
+		Registry.register(Registry.BLOCK, craftID("iridium_ore"), IRIDIUM_ORE);
+		//Register Blocks
+		Registry.register(Registry.BLOCK, craftID("platinum_block"), PLATINUM_BLOCK);
+		Registry.register(Registry.BLOCK, craftID("iridium_block"), IRIDIUM_BLOCK);
+		//Register Items for Blocks
+		Registry.register(Registry.ITEM, craftID("platinum_ore"), new BlockItem(PLATINUM_ORE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.ITEM, craftID("iridium_ore"), new BlockItem(IRIDIUM_ORE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.ITEM, craftID("platinum_block"), new BlockItem(PLATINUM_BLOCK, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.ITEM, craftID("iridium_block"), new BlockItem(IRIDIUM_BLOCK, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
+		//Register WorldGen Ore Feature
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, craftID("ore_platinum_overworld"), ORE_PLATINUM_OVERWORLD);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, craftID("ore_iridium_overworld"), ORE_IRIDIUM_OVERWORLD);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, craftID("ore_iridium_end"), ORE_IRIDIUM_END);
 
 	}
 	public Identifier craftID(String id){
