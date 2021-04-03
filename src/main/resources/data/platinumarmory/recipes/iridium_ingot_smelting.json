@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": { "item": "platinumarmory:iridium_ore" },
+	"result": "platinumarmory:iridium_ingot",
+	"experience": 1.5,
+	"cookingtime": 1600
+}
+

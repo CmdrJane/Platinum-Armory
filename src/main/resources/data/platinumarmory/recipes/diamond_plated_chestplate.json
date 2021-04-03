@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "platinumarmory:plat_gold_chestplate"
+    },
+    "addition": {
+        "item": "platinumarmory:diamond_plate"
+    },
+    "result": {
+        "item": "platinumarmory:diamond_plated_chestplate"
+    }
+}

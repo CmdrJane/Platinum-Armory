@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "platinumarmory:platinum_ingot"
+    },
+    "addition": {
+        "item": "platinumarmory:iridium_ingot"
+    },
+    "result": {
+        "item": "platinumarmory:plat_ir_alloy_raw"
+    }
+}
