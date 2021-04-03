@@ -2,6 +2,7 @@ package ru.aiefu.platinumarmory;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -39,7 +40,6 @@ public class PlatinumArmory implements ModInitializer {
 	public static final Item PLATINUM_IRIDIUM_CHESTPLATE = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_IRIDIUM_LEGGINGS = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_IRIDIUM_BOOTS = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
-
 
 	@Override
 	public void onInitialize() {
