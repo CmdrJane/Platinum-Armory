@@ -8,8 +8,8 @@ import net.minecraft.sound.SoundEvents;
 import ru.aiefu.platinumarmory.PlatinumArmory;
 
 public class DiamondPlated implements ArmorMaterial {
-    private static final int[] BASE_DURABILITY = new int[] {13, 15, 16, 11};
-    private static final int[] PROTECTION_VALUES = new int[] {3, 7, 7, 3};
+    private static final int[] BASE_DURABILITY = new int[] {15, 25 , 19, 18};
+    private static final int[] PROTECTION_VALUES = new int[] {4, 7, 7, 4};
 
     @Override
     public int getDurability(EquipmentSlot slot) {
@@ -23,7 +23,7 @@ public class DiamondPlated implements ArmorMaterial {
 
     @Override
     public int getEnchantability() {
-        return 23;
+        return 24;
     }
 
     @Override
@@ -43,11 +43,11 @@ public class DiamondPlated implements ArmorMaterial {
 
     @Override
     public float getToughness() {
-        return 1.4F;
+        return 1.6F;
     }
 
     @Override
     public float getKnockbackResistance() {
-        return 0.75F;
+        return 1.25F;
     }
 }

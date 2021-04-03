@@ -9,12 +9,12 @@ import ru.aiefu.platinumarmory.PlatinumArmory;
 
 public class GoldPlatinumAlloy implements ArmorMaterial {
 
-    private static final int[] BASE_DURABILITY = new int[] {13, 15, 16, 11};
+    private static final int[] BASE_DURABILITY = new int[] {13, 17, 16, 15};
     private static final int[] PROTECTION_VALUES = new int[] {2, 6, 7, 3};
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return BASE_DURABILITY[slot.getEntitySlotId()] * 37;
+        return BASE_DURABILITY[slot.getEntitySlotId()] * 27;
     }
 
     @Override

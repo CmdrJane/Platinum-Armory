@@ -8,12 +8,12 @@ import net.minecraft.sound.SoundEvents;
 import ru.aiefu.platinumarmory.PlatinumArmory;
 
 public class IridiumPlatinumAlloy implements ArmorMaterial {
-    private static final int[] BASE_DURABILITY = new int[] {13, 15, 16, 11};
-    private static final int[] PROTECTION_VALUES = new int[] {3, 7, 7, 3};
+    private static final int[] BASE_DURABILITY = new int[] {17, 30, 25, 21};
+    private static final int[] PROTECTION_VALUES = new int[] {4, 9, 8, 4};
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return BASE_DURABILITY[slot.getEntitySlotId()] * 37;
+        return BASE_DURABILITY[slot.getEntitySlotId()] * 40;
     }
 
     @Override
@@ -43,11 +43,11 @@ public class IridiumPlatinumAlloy implements ArmorMaterial {
 
     @Override
     public float getToughness() {
-        return 1.75F;
+        return 2.0F;
     }
 
     @Override
     public float getKnockbackResistance() {
-        return 1.45F;
+        return 1.75F;
     }
 }
