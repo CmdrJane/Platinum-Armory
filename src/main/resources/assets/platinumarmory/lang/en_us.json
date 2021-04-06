@@ -1,11 +1,9 @@
 {
     "item.platinumarmory.platinum_ingot": "Platinum Ingot",
-    "item.platinumarmory.plat_gold_alloy_raw": "Platinum-Gold Alloy",
-    "item.platinumarmory.plat_gold_alloy_smelted": "Platinum-Gold Alloy Forged",
+    "item.platinumarmory.plat_gold_alloy": "Platinum-Gold Alloy",
     "item.platinumarmory.diamond_plate": "Diamond Enforcing Plate",
     "item.platinumarmory.iridium_ingot": "Iridium Ingot",
-    "item.platinumarmory.plat_ir_alloy_raw": "Platinum-Iridium Ingot Alloy",
-    "item.platinumarmory.plat_ir_alloy_smelted": "Platinum-Iridium Ingot Alloy Forged",
+    "item.platinumarmory.plat_ir_alloy": "Platinum-Iridium Ingot Alloy",
     "item.platinumarmory.plat_gold_helmet": "Platinum-Golden Helmet",
     "item.platinumarmory.plat_gold_chestplate": "Platinum-Golden Chestplate",
     "item.platinumarmory.plat_gold_leggings": "Platinum-Golden Leggings",

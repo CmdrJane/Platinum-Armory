@@ -1,11 +1,8 @@
 package ru.aiefu.platinumarmory;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
@@ -14,8 +11,6 @@ import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -35,11 +30,9 @@ public class PlatinumArmory implements ModInitializer {
 	//Crafting Stuff
 	public static final Item PLATINUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item PLATINUM_GOLDEN_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
-	public static final Item PLATINUM_GOLDEN_ALLOY_SMELTED = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item DIAMOND_PLATE = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item IRIDIUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item PLATINUM_IRIDIUM_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
-	public static final Item PLATINUM_IRIDIUM_ALLOY_SMELTED = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	//Armor Plat-Gold
 	public static final Item PLATINUM_GOLD_HELMET = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item PLATINUM_GOLD_CHESTPLATE = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
@@ -72,12 +65,10 @@ public class PlatinumArmory implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Registry.register(Registry.ITEM, craftID("platinum_ingot"), PLATINUM_INGOT);
-		Registry.register(Registry.ITEM, craftID("plat_gold_alloy_raw"), PLATINUM_GOLDEN_ALLOY_RAW);
-		Registry.register(Registry.ITEM, craftID("plat_gold_alloy_smelted"), PLATINUM_GOLDEN_ALLOY_SMELTED);
+		Registry.register(Registry.ITEM, craftID("plat_gold_alloy"), PLATINUM_GOLDEN_ALLOY_RAW);
 		Registry.register(Registry.ITEM, craftID("diamond_plate"), DIAMOND_PLATE);
 		Registry.register(Registry.ITEM, craftID("iridium_ingot"), IRIDIUM_INGOT);
-		Registry.register(Registry.ITEM, craftID("plat_ir_alloy_raw"), PLATINUM_IRIDIUM_ALLOY_RAW);
-		Registry.register(Registry.ITEM, craftID("plat_ir_alloy_smelted"), PLATINUM_IRIDIUM_ALLOY_SMELTED);
+		Registry.register(Registry.ITEM, craftID("plat_ir_alloy"), PLATINUM_IRIDIUM_ALLOY_RAW);
 		//Plat-Gold-Armor
 		Registry.register(Registry.ITEM, craftID("plat_gold_helmet"), PLATINUM_GOLD_HELMET);
 		Registry.register(Registry.ITEM, craftID("plat_gold_chestplate"), PLATINUM_GOLD_CHESTPLATE);

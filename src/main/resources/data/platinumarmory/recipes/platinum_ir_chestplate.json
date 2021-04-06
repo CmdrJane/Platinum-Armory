@@ -4,7 +4,7 @@
         "item": "minecraft:diamond_plated_chestplate"
     },
     "addition": {
-        "item": "platinumarmory:plat_gold_alloy_smelted"
+        "item": "platinumarmory:plat_ir_alloy"
     },
     "result": {
         "item": "platinumarmory:plat_ir_chestplate"

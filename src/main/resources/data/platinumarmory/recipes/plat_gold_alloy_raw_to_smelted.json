@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:smelting",
-	"ingredient": { "item": "platinumarmory:plat_gold_alloy_raw" },
-	"result": "platinumarmory:plat_gold_alloy_smelted",
-	"experience": 0.5,
-	"cookingtime": 900
-}
-
