@@ -33,7 +33,7 @@ public class DiamondPlated implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(PlatinumArmory.PLATINUM_GOLDEN_ALLOY_SMELTED, PlatinumArmory.DIAMOND_PLATE);
+        return Ingredient.ofItems(PlatinumArmory.PLATINUM_GOLDEN_ALLOY, PlatinumArmory.DIAMOND_PLATE);
     }
 
     @Override

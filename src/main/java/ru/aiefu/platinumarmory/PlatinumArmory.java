@@ -24,30 +24,30 @@ public class PlatinumArmory implements ModInitializer {
 
 	public static final String MOD_ID = "platinumarmory";
 	//Materials
-	public static final ArmorMaterial PLATINUM_GOLD_ALLOY = new GoldPlatinumAlloy();
+	public static final ArmorMaterial PLATINUM_GOLD_MATERIAL = new GoldPlatinumAlloy();
 	public static final ArmorMaterial DIAMOND_PLATED = new DiamondPlated();
-	public static final ArmorMaterial PLATINUM_IRIDIUM_ALLOY = new IridiumPlatinumAlloy();
+	public static final ArmorMaterial PLATINUM_IRIDIUM_MATERIAL = new IridiumPlatinumAlloy();
 	//Crafting Stuff
 	public static final Item PLATINUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
-	public static final Item PLATINUM_GOLDEN_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item PLATINUM_GOLDEN_ALLOY = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item DIAMOND_PLATE = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item IRIDIUM_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
-	public static final Item PLATINUM_IRIDIUM_ALLOY_RAW = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+	public static final Item PLATINUM_IRIDIUM_ALLOY = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	//Armor Plat-Gold
-	public static final Item PLATINUM_GOLD_HELMET = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
-	public static final Item PLATINUM_GOLD_CHESTPLATE = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
-	public static final Item PLATINUM_GOLD_LEGGINGS = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
-	public static final Item PLATINUM_GOLD_BOOTS = new ArmorItem(PLATINUM_GOLD_ALLOY, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_GOLD_HELMET = new ArmorItem(PLATINUM_GOLD_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_GOLD_CHESTPLATE = new ArmorItem(PLATINUM_GOLD_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_GOLD_LEGGINGS = new ArmorItem(PLATINUM_GOLD_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_GOLD_BOOTS = new ArmorItem(PLATINUM_GOLD_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
 	//Armor Diamond-Plated
 	public static final Item DIAMOND_PLATED_HELMET = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item DIAMOND_PLATED_CHESTPLATE = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item DIAMOND_PLATED_LEGGINGS = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final Item DIAMOND_PLATED_BOOTS = new ArmorItem(DIAMOND_PLATED, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
 	//Armor Platinum-Iridium
-	public static final Item PLATINUM_IRIDIUM_HELMET = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
-	public static final Item PLATINUM_IRIDIUM_CHESTPLATE = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
-	public static final Item PLATINUM_IRIDIUM_LEGGINGS = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
-	public static final Item PLATINUM_IRIDIUM_BOOTS = new ArmorItem(PLATINUM_IRIDIUM_ALLOY, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_IRIDIUM_HELMET = new ArmorItem(PLATINUM_IRIDIUM_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_IRIDIUM_CHESTPLATE = new ArmorItem(PLATINUM_IRIDIUM_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_IRIDIUM_LEGGINGS = new ArmorItem(PLATINUM_IRIDIUM_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item PLATINUM_IRIDIUM_BOOTS = new ArmorItem(PLATINUM_IRIDIUM_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
 	//Ore
 	public static final OreBlock PLATINUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0f));
 	public static final OreBlock IRIDIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().strength(6.0f));
@@ -65,10 +65,10 @@ public class PlatinumArmory implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Registry.register(Registry.ITEM, craftID("platinum_ingot"), PLATINUM_INGOT);
-		Registry.register(Registry.ITEM, craftID("plat_gold_alloy"), PLATINUM_GOLDEN_ALLOY_RAW);
+		Registry.register(Registry.ITEM, craftID("plat_gold_alloy"), PLATINUM_GOLDEN_ALLOY);
 		Registry.register(Registry.ITEM, craftID("diamond_plate"), DIAMOND_PLATE);
 		Registry.register(Registry.ITEM, craftID("iridium_ingot"), IRIDIUM_INGOT);
-		Registry.register(Registry.ITEM, craftID("plat_ir_alloy"), PLATINUM_IRIDIUM_ALLOY_RAW);
+		Registry.register(Registry.ITEM, craftID("plat_ir_alloy"), PLATINUM_IRIDIUM_ALLOY);
 		//Plat-Gold-Armor
 		Registry.register(Registry.ITEM, craftID("plat_gold_helmet"), PLATINUM_GOLD_HELMET);
 		Registry.register(Registry.ITEM, craftID("plat_gold_chestplate"), PLATINUM_GOLD_CHESTPLATE);

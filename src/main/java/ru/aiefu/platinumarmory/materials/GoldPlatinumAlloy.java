@@ -34,7 +34,7 @@ public class GoldPlatinumAlloy implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(PlatinumArmory.PLATINUM_GOLDEN_ALLOY_SMELTED);
+        return Ingredient.ofItems(PlatinumArmory.PLATINUM_GOLDEN_ALLOY);
     }
 
     @Override
